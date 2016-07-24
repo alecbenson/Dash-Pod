@@ -10,7 +10,6 @@ var plumber = require('gulp-plumber');
 var jetpack = require('fs-jetpack');
 
 var bundle = require('./bundle');
-var generateSpecImportsFile = require('./generate_spec_imports');
 var utils = require('../utils');
 
 var projectDir = jetpack;
@@ -52,20 +51,8 @@ var bundleApplication = function () {
         ]);
 };
 
-var bundleSpecs = function () {
-    return generateSpecImportsFile().then(function (specEntryPointPath) {
-        return bundle(specEntryPointPath, destDir.path('spec.js'));
-    });
-};
-
-var bundleTask = function () {
-    if (utils.getEnvName() === 'test') {
-        return bundleSpecs();
-    }
-    return bundleApplication();
-};
-gulp.task('bundle', ['clean'], bundleTask);
-gulp.task('bundle-watch', bundleTask);
+gulp.task('bundle', ['clean'], bundleApplication);
+gulp.task('bundle-watch', bundleApplication);
 
 
 var lessTask = function () {
@@ -79,21 +66,13 @@ gulp.task('less-watch', lessTask);
 
 
 gulp.task('environment', ['clean'], function () {
-    var configFile = 'config/env_' + utils.getEnvName() + '.json';
+    var configFile = 'config/config.json';
     projectDir.copy(configFile, destDir.path('env.json'));
 });
 
 
 gulp.task('package-json', ['clean'], function () {
     var manifest = srcDir.read('package.json', 'json');
-
-    // Add "dev" suffix to name, so Electron will write all data like cookies
-    // and localStorage in separate places for production and development.
-    if (utils.getEnvName() === 'development') {
-        manifest.name += '-dev';
-        manifest.productName += ' Dev';
-    }
-
     destDir.write('package.json', manifest);
 });
 

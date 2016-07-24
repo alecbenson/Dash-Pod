@@ -1,4 +1,4 @@
-import Spotify from '../music/spotify';
+import Spotify from '../music/spotify/spotify';
 
 var spotify = new Spotify();
 

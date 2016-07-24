@@ -15,10 +15,7 @@ import env from './env';
 var mainWindow;
 
 var setApplicationMenu = function () {
-    var menus = [editMenuTemplate];
-    if (env.name !== 'production') {
-        menus.push(devMenuTemplate);
-    }
+    var menus = [editMenuTemplate, devMenuTemplate];
     Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
 
@@ -31,10 +28,7 @@ app.on('ready', function () {
     });
 
     mainWindow.loadURL('file://' + __dirname + '/app.html');
-
-    if (env.name !== 'production') {
-        mainWindow.openDevTools();
-    }
+    mainWindow.openDevTools();
 });
 
 app.on('window-all-closed', function () {
