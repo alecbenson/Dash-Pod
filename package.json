@@ -1,0 +1,29 @@
+{
+  "name": "dash-pod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alecbenson/Dash-Pod.git"
+  },
+  "keywords": [
+    "IOT",
+    "Raspberry",
+    "PI",
+    "Home",
+    "Automation"
+  ],
+  "author": "Alec Benson",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/alecbenson/Dash-Pod/issues"
+  },
+  "homepage": "https://github.com/alecbenson/Dash-Pod#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.8"
+  }
+}
