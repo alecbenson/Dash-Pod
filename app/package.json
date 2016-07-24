@@ -1,15 +1,27 @@
 {
-  "name": "dash-pod",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "dependencies": {
-    "gulp": "^3.9.1"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "electron-boilerplate",
+  "productName": "Electron Boilerplate",
+  "description": "Starter for your Electron application. Out of the box ready for serious stuff.",
+  "version": "0.1.0",
   "author": "Alec Benson",
-  "license": "AGPL-3.0"
+  "main": "background.js",
+  "dependencies": {
+    "annyang": "^2.4.0",
+    "fs-jetpack": "^0.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alecbenson/Dash-Pod.git"
+  },
+  "packageNameTemplate": "{{name}}-v{{version}}-{{platform}}-{{arch}}",
+  "osx": {
+    "build": "1",
+    "identifier": "com.example.electron-boilerplate",
+    "LSApplicationCategoryType": "public.app-category.productivity",
+    "//codeSignIdentitiy": {
+      "dmg": "Developer ID Application: Company Name (APPIDENTITY)",
+      "MAS": "3rd Party Mac Developer Application: Company Name (APPIDENTITY)",
+      "MASInstaller": "3rd Party Mac Developer Installer: Company Name (APPIDENTITY)"
+    }
+  }
 }
